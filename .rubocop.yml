@@ -1,0 +1,19 @@
+inherit_from: .rubocop_todo.yml
+
+Metrics/LineLength:
+  Max: 121
+  Exclude:
+    - 'spec/**/*'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - 'spec/**/*'
+    - 'lib/adsddl.rb'
+
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
+  Exclude:
+    - 'lib/adsddl/data/ace_rights.rb'
