@@ -130,26 +130,31 @@ module Adsddl
     # ADS_RIGHT_DS_CONTROL_ACCESS - The ObjectType GUID identifies an extended access right.
     ##
     CR = new(0x00000100)
-    #        FA = new(0x001F01FF)
-    #        FX = new(0x001200A0)
-    #        FW = new(0x00100116)
-    #        FR = new(0x00120089)
-    #        KA = new(0x00000019)
-    #        KR = new(0x0000003F)
-    #        KX = new(0x00000019)
-    #        KW = new(0x00000006)
-    #        LO = new(0x00000080)
-    #        DT = new(0x00000040)
-    #        WP = new(0x00000020)
-    #        RP = new(0x00000010)
-    #        SW = new(0x00000008)
-    #        LC = new(0x00000004)
-    #        DC = new(0x00000002)
-    #        CC = new(0x00000001)
+
+    # FA = new(0x001F01FF)
+    # FX = new(0x001200A0)
+    # FW = new(0x00100116)
+    # FR = new(0x00120089)
+    # KA = new(0x00000019)
+    # KR = new(0x0000003F)
+    # KX = new(0x00000019)
+    # KW = new(0x00000006)
+    # LO = new(0x00000080)
+    # DT = new(0x00000040)
+    # WP = new(0x00000020)
+    # RP = new(0x00000010)
+    # SW = new(0x00000008)
+    # LC = new(0x00000004)
+    # DC = new(0x00000002)
+    # CC = new(0x00000001)
     VALUES = constants
              .reject { |x| x == :VALUES }
              .map { |c| type = const_get(c); type.name = c.to_s; [type.value, type] }
              .to_h
+
+    def to_s
+      name
+    end
   end
 
   ##
@@ -171,9 +176,9 @@ module Adsddl
     ##
     # Default constructor.
     ##
-    def initialize
+    def initialize(rights = [])
       @others = 0
-      @rights = []
+      @rights = rights
     end
 
     ##
@@ -210,5 +215,8 @@ module Adsddl
 
       res
     end
+
+    # The simple read is a collection of 3 other permissions
+    READ = parse_value(0x20014)
   end
 end

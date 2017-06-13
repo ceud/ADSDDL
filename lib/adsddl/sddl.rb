@@ -58,25 +58,25 @@ module Adsddl
     # The SID of the owner of the object. The length of the SID MUST be a multiple of 4. This field MUST be present if
     # the OffsetOwner field is not zero.
     ##
-    attr_reader :owner
+    attr_accessor :owner
 
     ##
     # The SID of the group of the object. The length of the SID MUST be a multiple of 4. This field MUST be present if
     # the GroupOwner field is not zero.
     ##
-    attr_reader :group
+    attr_accessor :group
 
     ##
-    # The DACL of the object. The length of the SID MUST be a multiple of 4. This field MUST be present if the SP flag
+    # The DACL of the object. This field MUST be present if the DP flag
     # is set.
     ##
-    attr_reader :dacl
+    attr_accessor :dacl
 
     ##
-    # The SACL of the object. The length of the SID MUST be a multiple of 4. This field MUST be present if the DP flag
+    # The SACL of the object. This field MUST be present if the SP flag
     # is set.
     ##
-    attr_reader :sacl
+    attr_accessor :sacl
 
     ##
     # Constructor.

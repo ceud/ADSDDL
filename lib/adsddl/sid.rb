@@ -63,8 +63,8 @@ module Adsddl
     #
     # @param identifier identifier authority (6 bytes only).
     ##
-    def initialize(identifier = nil)
-      @sub_authorities = []
+    def initialize(identifier = nil, sub_authorities = [])
+      @sub_authorities = sub_authorities
       @revision = 0x01
       @identifier_authority = identifier
     end
@@ -148,6 +148,10 @@ module Adsddl
       [revision, sub_authority_count, *identifier_authority, *sub_authorities].pack('C8V*')
     end
 
+    def ==(other)
+      other.class == self.class && other.bytes == bytes
+    end
+
     ##
     # Serializes to string.
     #
@@ -170,5 +174,7 @@ module Adsddl
 
       bld
     end
+
+    AUTHENTICATED_USERS = SID.new([0, 0, 0, 0, 0, 5], [11])
   end
 end

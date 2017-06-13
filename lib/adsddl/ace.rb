@@ -66,9 +66,12 @@ module Adsddl
     # @param type ACE type.
     # @return ACE.
     ##
-    def initialize(type = nil)
+    def initialize(type: nil, sid: nil, rights: nil, flags: [], object_flags: nil)
       @type = type
-      @flags = []
+      @flags = flags
+      @rights = rights
+      @object_flags = object_flags
+      @sid = sid
     end
 
     ##

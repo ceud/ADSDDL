@@ -42,6 +42,9 @@ module Adsddl
   # @see https:#msdn.microsoft.com/en-us/library/cc230297.aspx
   ##
   class ACL
+    extend Forwardable
+
+    def_delegators :@aces, :<<, :select, :map, :each, :reject!
     ##
     # An unsigned 8-bit value that specifies the revision of the ACL. The only two legitimate forms of ACLs supported
     # for on-the-wire management or manipulation are type 2 and type 4. No other form is valid for manipulation on the
